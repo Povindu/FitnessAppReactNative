@@ -3,8 +3,8 @@ import { createContext, useState } from "react";
 export const ClickCountContext = createContext({
   clickCount: 0,
   setClickCount: (value: number) => {},
-  yourName: "",
-  setYourName: (value: string) => {},
+  userName: "",
+  setuserName: (value: string) => {},
   isAuthenticated: false,
   setIsAuthenticated: (value: boolean) => {},
   userEmail: "",
@@ -15,7 +15,7 @@ export const ClickCountContext = createContext({
 
 const ClickCountProvider = ({ children }: { children: any }) => {
   const [clickCount, setClickCount] = useState(0);
-  const [yourName, setYourName] = useState("");
+  const [userName, setuserName] = useState("");
 
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [userEmail, setUserEmail] = useState("");
@@ -25,8 +25,8 @@ const ClickCountProvider = ({ children }: { children: any }) => {
       value={{
         clickCount,
         setClickCount,
-        yourName,
-        setYourName,
+        userName,
+        setuserName,
         isAuthenticated,
         setIsAuthenticated,
         userEmail,

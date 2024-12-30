@@ -20,17 +20,19 @@ export default function Index() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
+  const router = useRouter();
+
   const [errors, setErrors] = useState<{
     name?: string;
     email?: string;
     password?: string;
   }>({});
-  const { setUserEmail, setUserPassword, setYourName } =
+
+  const { setUserEmail, setUserPassword, setuserName } =
     useContext(ClickCountContext);
-  const router = useRouter();
 
   const handleSignUp = () => {
-    setYourName(name);
+    setuserName(name);
     let validity = true;
     const newErrors: any = {};
 
@@ -50,8 +52,8 @@ export default function Index() {
     if (!password) {
       newErrors.password = "Password is required";
       validity = false;
-    } else if (password.length < 6) {
-      newErrors.password = "Password must be at least 6 characters";
+    } else if (password.length < 8) {
+      newErrors.password = "Password must be at least 8 characters";
       validity = false;
     } else if (password !== confirmPassword) {
       newErrors.password = "Passwords do not match";
@@ -103,8 +105,6 @@ export default function Index() {
       />
       {errors.email && <Text style={styles.errorText}>{errors.email}</Text>}
 
-
-
       <View style={styles.pass}>
         <TextInput
           placeholderTextColor="#000"
@@ -120,7 +120,7 @@ export default function Index() {
           <Text style={styles.passText}>Show</Text>
         </Pressable>
       </View>
-      
+
       <View style={styles.pass}>
         <TextInput
           placeholderTextColor="#000"
@@ -159,7 +159,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "rgba(255, 255, 255, 0.514)", // Optional overlay for readability
+    backgroundColor: "#fff",
     padding: 20,
   },
   mainLogoContainer: {
@@ -174,13 +174,13 @@ const styles = StyleSheet.create({
   logoBox: {
     width: 40,
     height: 40,
-    backgroundColor: "#FFD700", // Example color for the logo
+    backgroundColor: "#FFD700", 
     margin: 5,
     borderRadius: 5,
   },
   passText: {
     fontSize: 18,
-    color: "#418ac7",
+    color: "#FFA500",
     padding: 15,
     marginBottom: 30,
   },
@@ -215,11 +215,11 @@ const styles = StyleSheet.create({
   button: {
     width: "80%",
     height: 50,
-    backgroundColor: "#418ac7",
+    backgroundColor: "#FFA500",
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 8,
-    marginTop: 10,
+    marginTop: 5,
   },
   cardImage: {
     height: 170,
@@ -232,12 +232,12 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   footerText: {
-    marginTop: 20,
+    marginTop: 10,
     fontSize: 14,
     color: "#555",
   },
   link: {
-    color: "#418ac7",
+    color: "#FFA500",
   },
   errorText: {
     color: "red",

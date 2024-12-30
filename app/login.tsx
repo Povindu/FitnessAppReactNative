@@ -27,6 +27,10 @@ export default function Login() {
     setShowPassword(!showPassword);
   };
 
+  const handleRegisterSwitch = () => {
+    router.push("/");
+  };
+
   const handleLogin = () => {
     let validity = true;
     const newErrors: any = {};
@@ -42,8 +46,8 @@ export default function Login() {
     if (!password) {
       newErrors.password = "Password is required";
       validity = false;
-    } else if (password.length < 6) {
-      newErrors.password = "Password must be at least 6 characters";
+    } else if (password.length < 8) {
+      newErrors.password = "Password must be at least 8 characters";
       validity = false;
     }
 
@@ -110,10 +114,14 @@ export default function Login() {
 }
 
 const styles = StyleSheet.create({
-  backgroundImage: {
+  container: {
     flex: 1,
-    resizeMode: "cover",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 20,
+    backgroundColor: "#fff",
   },
+
   inputPass: {
     width: "80%",
     height: 50,
@@ -125,17 +133,12 @@ const styles = StyleSheet.create({
     paddingLeft: 15,
     fontSize: 16,
   },
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    padding: 20,
-    backgroundColor: "rgba(255, 255, 255, 0.514)",
-  },
+
   logoContainer: {
     flexDirection: "row",
     marginBottom: 30,
   },
+
   title: {
     fontSize: 32,
     fontWeight: "bold",
@@ -149,7 +152,7 @@ const styles = StyleSheet.create({
   },
   passText: {
     fontSize: 18,
-    color: "#418ac7",
+    color: "#FFA500",
     padding: 15,
     marginBottom: 30,
   },
@@ -167,7 +170,7 @@ const styles = StyleSheet.create({
   button: {
     width: "80%",
     height: 50,
-    backgroundColor: "#418ac7",
+    backgroundColor: "#FFA500",
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 8,
@@ -184,7 +187,7 @@ const styles = StyleSheet.create({
     color: "#555",
   },
   link: {
-    color: "#418ac7",
+    color: "#FFA500",
   },
   errorText: {
     color: "red",
